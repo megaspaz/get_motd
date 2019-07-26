@@ -26,12 +26,14 @@ _LINE_DELIMITER = '\n\n'
 
 
 def main():
+  """Main program."""
+
   file_list = ''
   try:
     # Get the list from /etc/motd_list.
-    fd = open(_MOTD_LIST, 'r')
-    file_list = fd.read().strip()
-    fd.close()
+    file_desc = open(_MOTD_LIST, 'r')
+    file_list = file_desc.read().strip()
+    file_desc.close()
 
     # We've got the file's contents. Split this by the delimiter.
     msg_list = file_list.split(_LINE_DELIMITER)
@@ -40,12 +42,13 @@ def main():
     # Set the message. Get a random message from the message list.
     motd_greet = "Welcome To %s!" % this_host.upper()
     motd = "\n%s%s%s%s" % (motd_greet, _LINE_DELIMITER,
-      msg_list[random.randrange(0, len(msg_list))].strip(),_LINE_DELIMITER)
+                           msg_list[random.randrange(0, len(msg_list))].strip(),
+                           _LINE_DELIMITER)
 
     # Write this to file.
-    fd = open(_MOTD_FILE, 'w')
-    fd.write(motd)
-    fd.close()
+    file_desc = open(_MOTD_FILE, 'w')
+    file_desc.write(motd)
+    file_desc.close()
 
     return 0
 
@@ -53,5 +56,5 @@ def main():
     sys.stderr.write("%s\n" % err)
     return err.errno
 
-if '__main__' == __name__:
+if __name__ == '__main__':
   sys.exit(main())
