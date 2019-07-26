@@ -49,7 +49,7 @@ def main():
 
     return 0
 
-  except(IOError, OSError, MemoryError), err:
+  except(IOError, OSError, MemoryError) as err:
     sys.stderr.write("%s\n" % err)
     return err.errno
 
