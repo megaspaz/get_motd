@@ -39,7 +39,7 @@ def main():
     this_host = socket.gethostname().strip()
     # Set the message. Get a random message from the message list.
     motd_greet = "Welcome To %s!" % this_host.upper()
-    motd = "\n%s\n\n%s%s" % (motd_greet, 
+    motd = "\n%s%s%s%s" % (motd_greet, _LINE_DELIMITER,
       msg_list[random.randrange(0, len(msg_list))].strip(),_LINE_DELIMITER)
 
     # Write this to file.
