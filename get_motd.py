@@ -22,7 +22,7 @@ import sys
 # Constants:
 _MOTD_LIST = '/etc/motd_list'
 _MOTD_FILE = '/etc/motd'
-_LINE_DELIMITER = '\n\n'
+_LINE_DELIMITER = '\n' * 2
 
 
 def main():
